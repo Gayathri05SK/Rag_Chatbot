@@ -33,3 +33,20 @@ sentence-transformers
 faster-whisper
 torch
 numpy
+streamlit==1.31.1
+streamlit-chat==0.1.1
+pandas
+requests
+nltk
+spacy
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz
+opencv-python
+easyocr
+ffmpeg-python
+python-docx
+pdfplumber
+sentence-transformers
+faster-whisper
+torch
+numpy
+
