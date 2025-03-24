@@ -11,11 +11,10 @@ import docx
 from sentence_transformers import SentenceTransformer, util
 from faster_whisper import WhisperModel
 
-
-# === Initialize NLP tools ===
-import nltk
+# ✅ Move these to the top-level scope
 nltk.download('punkt')
 nltk.download('stopwords')
+
 spacy_model = spacy.load("en_core_web_sm")
 spacy_model.max_length = 2000000
 
