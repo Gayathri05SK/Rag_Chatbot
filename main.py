@@ -30,9 +30,6 @@ def safe_nltk_download(resource):
 safe_nltk_download("tokenizers/punkt")
 safe_nltk_download("corpora/stopwords")
 
-# ✅ Move these to the top-level scope
-nltk.download('punkt')
-nltk.download('stopwords')
 
 spacy_model = spacy.load("en_core_web_sm")
 spacy_model.max_length = 2000000
