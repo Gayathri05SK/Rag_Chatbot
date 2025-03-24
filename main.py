@@ -11,6 +11,25 @@ import docx
 from sentence_transformers import SentenceTransformer, util
 from faster_whisper import WhisperModel
 
+import nltk
+import os
+import zipfile
+import shutil
+
+def safe_nltk_download(resource):
+    try:
+        nltk.data.find(resource)
+    except (LookupError, zipfile.BadZipFile):
+        # Clean corrupted files if any
+        resource_dir = os.path.join(os.path.expanduser("~"), "nltk_data", *resource.split("/"))
+        if os.path.exists(resource_dir):
+            shutil.rmtree(resource_dir, ignore_errors=True)
+        nltk.download(resource.split("/")[-1])
+
+# 🧠 Ensure these are downloaded
+safe_nltk_download("tokenizers/punkt")
+safe_nltk_download("corpora/stopwords")
+
 # ✅ Move these to the top-level scope
 nltk.download('punkt')
 nltk.download('stopwords')
