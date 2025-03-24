@@ -1,6 +1,12 @@
 import streamlit as st
 from streamlit_chat import message
 import os
+import nltk
+try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt")
+
 
 # === Import backend functions ===
 from main import (
