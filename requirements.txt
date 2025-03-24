@@ -5,6 +5,7 @@ requests
 nltk
 spacy
 opencv-python
+opencv-python-headless
 easyocr
 ffmpeg-python
 python-docx
