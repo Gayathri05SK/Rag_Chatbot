@@ -4,7 +4,7 @@ pandas
 requests
 nltk
 spacy
-opencv-python-headless
+opencv-python-headless==4.9.0.80
 easyocr
 ffmpeg-python
 python-docx
