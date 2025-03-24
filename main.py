@@ -11,11 +11,6 @@ import docx
 from sentence_transformers import SentenceTransformer, util
 from faster_whisper import WhisperModel
 
-import nltk
-try:
-    nltk.data.find("tokenizers/punkt")
-except LookupError:
-    nltk.download("punkt")
 
 # === Initialize NLP tools ===
 nltk.download('punkt')
