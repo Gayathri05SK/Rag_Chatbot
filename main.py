@@ -13,6 +13,7 @@ from faster_whisper import WhisperModel
 
 
 # === Initialize NLP tools ===
+import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 spacy_model = spacy.load("en_core_web_sm")
