@@ -26,7 +26,7 @@ def safe_nltk_download(resource):
             shutil.rmtree(resource_dir, ignore_errors=True)
         nltk.download(resource.split("/")[-1])
 
-# 🧠 Ensure these are downloaded
+# Ensure these are downloaded
 safe_nltk_download("tokenizers/punkt")
 safe_nltk_download("corpora/stopwords")
 
@@ -64,13 +64,13 @@ def get_csv_content_from_db():
 def load_pdf(path):
     import pdfplumber
     if not os.path.exists(path):
-        return "❌ PDF file not found."
+        return " PDF file not found."
     with pdfplumber.open(path) as pdf:
         return "\n".join([page.extract_text() for page in pdf.pages if page.extract_text()])
 
 def load_docx(path):
     if not os.path.exists(path):
-        return "❌ DOCX file not found."
+        return " DOCX file not found."
     doc = docx.Document(path)
     return "\n".join([para.text for para in doc.paragraphs if para.text.strip()])
 
@@ -115,21 +115,21 @@ def generate_answer_with_together(prompt):
         "max_tokens": 300
     }
     response = requests.post(url, headers=headers, json=data)
-    return response.json().get("choices", [{}])[0].get("message", {}).get("content", "⚠️ No response from API.")
+    return response.json().get("choices", [{}])[0].get("message", {}).get("content", " No response from API.")
 
 # === OCR & Audio ===
 def extract_text_from_image(image_path):
     if not os.path.exists(image_path):
-        return "❌ Image not found."
+        return " Image not found."
     result = reader.readtext(image_path)
     return " ".join([res[1] for res in result])
 
 def extract_text_from_video(video_path, frame_interval=60):
     if not os.path.exists(video_path):
-        return "❌ Video not found."
+        return " Video not found."
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
-        return "⚠️ Could not open video file."
+        return " Could not open video file."
     total_text = []
     frame_count = 0
     while True:
@@ -155,7 +155,7 @@ def transcribe_audio(audio_or_video_path, is_video=True):
             os.remove(audio_path)
         return transcript
     except Exception as e:
-        return f"⚠️ Transcription failed: {e}"
+        return f" Transcription failed: {e}"
 
 # === Q&A ===
 def ask_bot(query, kb, context):
@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
     conversation_history = []
 
-    print("\n✅ Chatbot ready! Ask questions or type 'exit' to quit.\n")
+    print("\n Chatbot ready! Ask questions or type 'exit' to quit.\n")
 
     while True:
         print("\n===== 💬 Past Conversation =====")
@@ -187,7 +187,7 @@ if __name__ == "__main__":
             for i, (q, a) in enumerate(conversation_history, 1):
                 print(f"{i}. 🧠 You: {q}\n   🤖 Bot: {a}")
 
-        print("\n📁 Choose data source:")
+        print("\n Choose data source:")
         print("1. Text Query")
         print("2. Image")
         print("3. Video")
@@ -225,7 +225,7 @@ if __name__ == "__main__":
         elif choice == "6":
             break
         else:
-            print("❌ Invalid choice.")
+            print(" Invalid choice.")
             continue
 
         conversation_history.append((user_q, response))
